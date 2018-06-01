@@ -1,0 +1,25 @@
+{
+  "name": "qrcode-experiments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "npm i && cp node_modules/qrcode/build/qrcode.min.js ./docs/qrcode.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmagallon/qrcode-experiments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmagallon/qrcode-experiments/issues"
+  },
+  "homepage": "https://github.com/gmagallon/qrcode-experiments#readme",
+  "dependencies": {
+    "qrcode": "^1.2.0"
+  }
+}
