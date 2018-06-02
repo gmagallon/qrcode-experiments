@@ -9,5 +9,12 @@
   <input type="file" accept="image/*" capture="camera"
          id="testFile" name="test"><br>
   <img id="testImg" style="width:100px"><br>
+
+  <script>
+    document.getElementById("testFile").onchange = function (event) {
+      src = window.URL.createObjectURL(event.target.files[0])
+      document.getElementById("testImg").src = src
+      window.URL.revokeObjectURL(src)}
+  </script>
 </body>
 </html>
