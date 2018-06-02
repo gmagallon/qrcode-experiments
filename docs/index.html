@@ -5,8 +5,13 @@
   <title>QR Code experiments</title>
 </head>
 <body style="height: 100%; display: flex; justify-content: center; align-items: center;">
-  <div style="padding: 1rem; display: inline-block;">
-    <div style="display: flex; width: 450px">
+<div style="padding: 1rem; display: inline-block;">
+  <div>
+    <label>Bordereau</label>
+    <button id="download">Download</button>
+  </div>
+  <br />
+  <div style="display: flex; width: 450px">
       <input id="input-value" placeholder="Value" type="text" style="flex: 1;" value="https://gmagallon.github.io/qrcode-experiments/take-photo" />
       <button onclick="generateCode(document.getElementById('input-value').value)">
         Générer un code
@@ -16,7 +21,7 @@
       <canvas id="canvas"></canvas>
     </div>
 
-    <button id="download">download</button>
+    <canvas id="canvas-download" style="visibility: hidden; position: absolute; left: -1000px;"></canvas>
   </div>
   <script src="./qrcode.min.js"></script>
   <script src="./jspdf.min.js"></script>
@@ -31,7 +36,7 @@
     const download = document.getElementById('download');
     download.addEventListener("click", function() {
 
-      QRCode.toCanvas("https://gmagallon.github.io/qrcode-experiments/take-photo?siren=1234567", function (error, canvas) {
+      QRCode.toCanvas(document.getElementById('canvas-download'), "https://gmagallon.github.io/qrcode-experiments/take-photo?siren=1234567", function (error, canvas) {
         if (error) console.error(error);
 
         // only jpeg is supported by jsPDF
