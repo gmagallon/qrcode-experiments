@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "npm i && cp node_modules/qrcode/build/qrcode.min.js ./docs/qrcode.min.js && cp node_modules/jsqr/dist/jsQR.js ./docs/scanner/jsQR.js"
+    "build": "npm i && cp node_modules/qrcode/build/qrcode.min.js ./docs/qrcode.min.js && cp node_modules/jsqr/dist/jsQR.js ./docs/scanner/jsQR.js && cp node_modules/jspdf/dist/jspdf.min.js ./docs/jspdf.min.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/gmagallon/qrcode-experiments#readme",
   "dependencies": {
+    "jspdf": "^1.4.0",
     "jsqr": "^1.0.4",
     "qrcode": "^1.2.0"
   }

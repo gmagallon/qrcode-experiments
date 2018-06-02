@@ -15,8 +15,11 @@
     <div style="height: 160px; padding: 1rem; display: flex; justify-content: center; align-items: center;">
       <canvas id="canvas"></canvas>
     </div>
+
+    <button id="download">download</button>
   </div>
   <script src="./qrcode.min.js"></script>
+  <script src="./jspdf.min.js"></script>
   <script>
     function generateCode(value) {
       if (!value) return;
@@ -24,6 +27,35 @@
         if (error) console.error(error);
       })
     }
+
+    const download = document.getElementById('download');
+    download.addEventListener("click", function() {
+
+      QRCode.toCanvas("https://gmagallon.github.io/qrcode-experiments/take-photo?siren=1234567", function (error, canvas) {
+        if (error) console.error(error);
+
+        // only jpeg is supported by jsPDF
+        var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        var pdf = new jsPDF();
+
+        pdf.setFontSize(20);
+
+        pdf.text(70, 10, 'SIREN : 1234567');
+
+        pdf.setFont("courier");
+        pdf.setFontSize(15);
+        pdf.text(50, 18, "A l'attention de");
+        pdf.text(140, 25, 'Société Blue');
+        pdf.text(140, 30, '15 rue rivoli');
+        pdf.text(140, 35, '75001 Paris');
+        pdf.text(50, 42, 'Avant le 15 juin 2018');
+
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+
+        pdf.save("download.pdf");
+      });
+    }, false);
+
   </script>
 </body>
 </html>
